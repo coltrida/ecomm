@@ -5,6 +5,7 @@
             <!-- Main menu -->
             <li class="current"><a href="{{route('admin.index')}}"><i class="glyphicon glyphicon-home"></i>
                     Dashboard</a></li>
+
             <li class="submenu">
                 <a href="#">
                     <i class="glyphicon glyphicon-list"></i> Products
@@ -18,6 +19,7 @@
                     <li><a href="{{route('product.create')}}">Add Product</a></li>
                 </ul>
             </li>
+
             <li class="submenu">
                 <a href="#">
                     <i class="glyphicon glyphicon-list"></i> Categories
@@ -26,6 +28,22 @@
                 <!-- Sub menu -->
                 <ul>
                     <li><a href="{{route('category.index')}}">Categories</a></li>
+                </ul>
+                {{--<ul>
+                    <li><a href="{{route('product.create')}}">Add Product</a></li>
+                </ul>--}}
+            </li>
+
+            <li class="submenu">
+                <a href="#">
+                    <i class="glyphicon glyphicon-list"></i> Orders
+                    <span class="caret pull-right"></span>
+                </a>
+                <!-- Sub menu -->
+                <ul>
+                    <li><a href="{{route('admin.orders', ['type' => 'pending'])}}">Pending Orders</a></li>
+                    <li><a href="{{route('admin.orders', ['type' => 'delivered'])}}">Delivered Orders</a></li>
+                    <li><a href="{{route('admin.orders')}}">All Orders</a></li>
                 </ul>
                 {{--<ul>
                     <li><a href="{{route('product.create')}}">Add Product</a></li>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use Auth;
 use function dd;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -11,12 +12,12 @@ use function view;
 
 class CheckoutController extends Controller
 {
-    public function step1() {
+    /*public function step1() {
         if(Auth::check()){
             return redirect()->route('checkout.shipping');
         };
         return redirect('login');
-    }
+    }*/
 
     public function shipping() {
         return view('front.shipping-info');
@@ -45,6 +46,10 @@ class CheckoutController extends Controller
         } catch (\Stripe\Error\Card $e){
 
         }
+
+        Order::createOrder();
+
+        return "order complete";
 
     }
 }

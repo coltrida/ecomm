@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 
 use function compact;
+use function dd;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,7 @@ class CartController extends Controller
     public function index()
     {
         $cartItems = Cart::content();
+        //dd($cartItems);
         return view('cart.index', compact('cartItems'));
     }
 

@@ -31,11 +31,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
     Route::resource('/product', 'ProductsController');
     Route::resource('/category', 'CategoriesController');
+
+    Route::get('/orders/{type?}', 'OrderController@orders')->name('admin.orders');
+    Route::post('/toggledeliver/{orderId}', 'OrderController@toggledeliver')->name('toggle.deliver');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('shipping-info', 'CheckoutController@shipping')->name('checkout.shipping');
 });
 
 // --------------------- CHECKOUT ------------------------------------
-Route::get('checkout', 'CheckoutController@step1')->name('checkout.step1');
-Route::get('shipping-info', 'CheckoutController@shipping')->name('checkout.shipping');
+//Route::get('checkout', 'CheckoutController@step1')->name('checkout.step1');
 Route::get('payment', 'CheckoutController@payment')->name('checkout.payment');
 Route::post('store-payment', 'CheckoutController@storePayment')->name('payment.store');
 
