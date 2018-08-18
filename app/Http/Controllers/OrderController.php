@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderShipped;
 use App\Order;
 use function back;
 use function compact;
 use Illuminate\Http\Request;
+use Mail;
 
 
 class OrderController extends Controller
@@ -26,6 +28,8 @@ class OrderController extends Controller
     public function toggledeliver(Request $request, $orderId) {
         $order = Order::find($orderId);
         if($request->has('delivered')){
+            Mail::to('coltrida@gmail.com')->send(new OrderShipped($order)); // invio mail
+            //Mail::to($order->user)->send(new OrderShipped($order)); // invio mail
             $order->delivered = $request->delivered;
         } else {
             $order->delivered = "0";

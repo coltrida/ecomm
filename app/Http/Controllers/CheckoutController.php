@@ -46,10 +46,9 @@ class CheckoutController extends Controller
         } catch (\Stripe\Error\Card $e){
 
         }
-
         Order::createOrder();
-
-        return "order complete";
+        Cart::destroy();
+        return redirect()->route('homefront');
 
     }
 }
