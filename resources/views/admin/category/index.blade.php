@@ -2,7 +2,10 @@
 
 @section('content')
     <div class="navbar">
-    	<a class="navbar-brand" href="#">Categories</a>
+
+        @include('admin.category._category-list', ['collection' => $categories['root']])
+
+{{--    	<a class="navbar-brand" href="#">Categories</a>
     	<ul class="nav navbar-nav">
 
     		@if(!empty($categories))
@@ -15,7 +18,7 @@
                 @endforelse
             @endif
 
-    	</ul>
+    	</ul>--}}
 
         <a class="btn btn-primary" data-toggle="modal" href="#modal-id">Add Category</a>
         <div class="modal fade" id="modal-id">
@@ -24,7 +27,7 @@
                 <form action="{{route('category.store')}}" method="post">
 
                     {{csrf_field()}}
-
+                    <input type="hidden" name="parent_id" value="0">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -47,7 +50,7 @@
         </div><!-- /.modal -->
     </div>
 
-    @if(!empty($products))
+{{--    @if(!empty($products))
         <section>
             <h3>Products</h3>
             <table class="table table-hover">
@@ -67,5 +70,5 @@
             	</tbody>
             </table>
         </section>
-    @endif
+    @endif--}}
 @endsection

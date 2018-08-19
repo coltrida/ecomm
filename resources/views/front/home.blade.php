@@ -8,7 +8,7 @@
         <br/>
         <h2>
             <strong>
-                Hey! Welcome to MC- Mykey's Store
+                Hey! Welcome to DAVIDE's Store
             </strong>
         </h2>
         <br>

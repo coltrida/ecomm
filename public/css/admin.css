@@ -598,6 +598,10 @@ body {
     clear: both;
 }
 
+#cat { counter-reset: item }
+#cat li { display: block }
+#cat li:before { content: counters(item, ".") " "; counter-increment: item }
+
 /* Responsive CSS */
 
 /* Mobile phones */

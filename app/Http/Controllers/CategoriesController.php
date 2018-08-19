@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use function compact;
+use function dd;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -15,8 +16,15 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.category.index', compact('categories'));
+        $categories = Category::all()->groupBy('parent_id');
+        //dd($categories);
+
+        // ----------------------- otional ------------------------
+        $categories['root']=$categories[0];
+        unset($categories[0]);
+        // ----------------------- otional ------------------------
+
+        return view('admin.category.index', compact(['categories', 'products']));
     }
 
     /**
@@ -52,6 +60,7 @@ class CategoriesController extends Controller
         $products=Category::find($id)->products;
 
         $categories = Category::all();
+
         return view('admin.category.index', compact(['categories', 'products']));
     }
 

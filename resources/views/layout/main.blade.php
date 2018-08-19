@@ -21,12 +21,17 @@
             <a href="{{route('homefront')}}">
                 <i class="fa fa-home fa-lg" aria-hidden="true">
                 </i>
-                MC-MyKey Shirts
+                DAVIDE Shirts
             </a>
         </h4>
     </div>
     <div class="top-bar-right">
-        <ol class="menu">
+        <ol class="menu dropdown" data-dropdown-menu>
+            <li>
+                <a href="#">
+                    CATEGORIES
+                </a>
+            </li>
             <li>
                 <a href="{{route('shirts')}}">
                     SHIRTS
@@ -47,6 +52,33 @@
                             </span>
                 </a>
             </li>
+
+            @guest
+            <li>
+                <a href="{{route('login')}}">
+                    LOGIN
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('register') }}">
+                    REGISTER
+                </a>
+            </li>
+            @else
+                <li>
+                    <a href="{{route('admin.index')}}" style="text-transform: uppercase">
+                        {{ Auth::user()->name }}
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('logout') }}">
+                        LOGOUT
+                    </a>
+                </li>
+            @endguest
+
         </ol>
     </div>
 </div>
